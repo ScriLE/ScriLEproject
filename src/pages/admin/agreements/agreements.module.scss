@@ -1,0 +1,27 @@
+.logo {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  background-color: #d9d9d9;
+  margin-right: 32px;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.grid {
+  margin-bottom: calc(var(--gap) * 10);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.pageContent {
+  flex: 1 1 auto;
+}

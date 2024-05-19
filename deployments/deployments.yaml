@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sso-frontend
+  labels:
+    app: sso-frontend
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: sso-frontend
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sso-frontend
+  labels:
+    app: sso-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sso-frontend
+  template:
+    metadata:
+      labels:
+        app: sso-frontend
+    spec:
+      containers:
+      - name: sso-frontend
+        image: {{SSO-FRONTEND-IMAGE}}
+       # --http-enabled=true
+        ports:
+        - name: http
+          containerPort: 80
+        imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+      - name: sso-frontend   

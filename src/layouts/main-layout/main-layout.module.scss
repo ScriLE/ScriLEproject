@@ -1,0 +1,39 @@
+.mainLayout {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+}
+
+.mainAside {
+  width: 280px;
+  flex: 0 0 auto;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 calc(var(--gap) * 6);
+  flex: 1 1 auto;
+
+  @media (min-width: 768px) {
+    padding: calc(var(--gap) * 12) calc(var(--gap) * 20);
+  }
+}
+
+.loaderBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,10 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 0;
+  flex: 1 1 auto;
+  &.active {
+    max-height: 1000px;
+  }
+}

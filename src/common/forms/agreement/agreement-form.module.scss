@@ -1,0 +1,13 @@
+.grid {
+  margin-bottom: calc(var(--gap) * 5);
+}
+
+.upload {
+  margin-top: calc(var(--gap) * 11);
+}
+
+.hint {
+  margin-top: 18px;
+  display: flex;
+  gap: calc(var(--gap) * 2);
+}

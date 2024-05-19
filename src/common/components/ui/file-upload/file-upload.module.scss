@@ -1,0 +1,27 @@
+.inputWrapper {
+}
+
+.inputLabel {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: calc(var(--gap) * 2);
+}
+
+.filename {
+  color: var(--text-grey-color);
+}
+
+.inputField {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--gap) * 6);
+}
+
+.input {
+  display: none;
+}
+
+.errorMessage {
+  color: #ff2e56;
+}

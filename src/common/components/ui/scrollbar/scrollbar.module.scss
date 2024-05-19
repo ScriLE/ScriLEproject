@@ -1,0 +1,23 @@
+.trackVertical {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: calc(var(--gap) * 2);
+  z-index: 100;
+}
+
+.trackHorizontal,
+.thumbHorizontal {
+  height: 0;
+}
+
+.trackVertical,
+.trackHorizontal {
+  background-color: transparent;
+}
+
+.thumbVertical,
+.thumbHorizontal {
+  border-radius: var(--gap);
+  background-color: var(--border-color);
+}

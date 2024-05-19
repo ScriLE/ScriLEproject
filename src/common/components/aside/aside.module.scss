@@ -1,0 +1,34 @@
+.aside {
+  background-color: var(--bg-light-color);
+  padding: 58px 48px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 76px;
+  display: block;
+}
+
+.navItem {
+  margin-bottom: 48px;
+}
+
+.navIcon {
+  margin-right: calc(var(--gap) * 3);
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--text-grey-color);
+  fill: var(--text-grey-color);
+}
+
+.activeLink {
+  color: var(--text-main-color);
+  fill: var(--text-main-color);
+}

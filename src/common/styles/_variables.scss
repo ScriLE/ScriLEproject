@@ -1,0 +1,25 @@
+:root {
+  --text-main-color: #333333;
+  --text-link-color: #0061d9;
+  --text-link-hover-color: #0050b2;
+  --header-color: #000000;
+  --text-grey-color: #76787a;
+  --border-color: #d9d9de;
+  --bg-light-color: #f5f5f5;
+  --bg-dark-color: #a7a7ab;
+  --white-color: #ffffff;
+  --blue-main-color: #0061d9;
+  --blue-main-active-color: #003980;
+  --alert-color: #ff2e56;
+  --alert-hover-color: #d92749;
+  --alert-active-color: #a61e38;
+  --alert-focus-color: #ff2e56;
+  --danger-color: #ff2e56;
+  --attention-color: #FFC700;
+  --dark-good-color: #20B227;
+
+  --font-golos: "golos", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --gap: 4px;
+  --border-radius: 4px;
+}

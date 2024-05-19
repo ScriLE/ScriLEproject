@@ -1,0 +1,23 @@
+.cell {
+  display: flex;
+  align-items: center;
+  padding: 22px;
+}
+
+.icon {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.sortable {
+  width: 16px;
+  margin-left: auto;
+
+  .icon {
+    fill: var(--bg-dark-color);
+    &:hover,
+    &.active {
+      fill: var(--header-color);
+    }
+  }
+}

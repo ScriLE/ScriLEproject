@@ -1,0 +1,26 @@
+.formWapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.formHead {
+  padding: 56px 0;
+  flex: 0 0 auto;
+}
+
+.formLogo {
+  width: 303px;
+  height: 34px;
+}
+
+.formBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.formFooter {
+  padding: 48px 0;
+}

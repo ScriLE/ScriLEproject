@@ -1,0 +1,1 @@
+export { Page404 } from "../public-pages/page-404";

@@ -1,0 +1,51 @@
+.inputWrapper {
+}
+
+.inputLabel {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: calc(var(--gap) * 2);
+}
+
+.inputField {
+  display: flex;
+  align-items: center;
+  background-color: var(--white-color);
+  border: 1px solid var(--bg-dark-color);
+  border-radius: var(--border-radius);
+  padding: calc(var(--gap) * 3);
+}
+
+.input {
+  flex: 1 1 auto;
+  outline: none;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.iconLeft {
+  margin-right: calc(var(--gap) * 2);
+}
+
+.error {
+  .inputField {
+    border: 1px solid #FF2E56;
+  }
+}
+
+.required:after {
+  content: "*";
+  color: #FF2E56;
+  margin-left: var(--gap);
+}
+
+.errorMessage {
+  height: 1rem;
+  color: #ff2e56;
+}

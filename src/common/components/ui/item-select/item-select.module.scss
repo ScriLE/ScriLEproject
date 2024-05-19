@@ -1,0 +1,36 @@
+.reactSelect {
+  position: relative;
+
+  &.focus {
+    .selectLabel {
+      font-size: 10px;
+      line-height: 12px;
+      top: 10px;
+    }
+  }
+
+  &.small {
+    &.focus {
+      .selectLabel {
+        display: none;
+      }
+    }
+
+    .selectLabel {
+      font-size: 14px;
+    }
+  }
+}
+
+.selectLabel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(var(--gap) * 4);
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--placeholder-color);
+  z-index: 1;
+  transition: 0.3s;
+  cursor: pointer;
+}

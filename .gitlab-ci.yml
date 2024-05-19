@@ -1,0 +1,114 @@
+variables:
+  CI_NODEJS_IMAGE: node:16
+  CONTAINER_NAME: sso-mock-frontend
+  IMAGE_NAME: ${CI_REGISTRY_IMAGE}/${CONTAINER_NAME}:${CI_PIPELINE_IID}
+  CI_RUNNER_IMAGE: ${CI_DEPLOY_RUNNER_IMAGE}
+  SYSLOG_ADDRESS: udp://siem.iri.center:514
+
+stages:
+  - build
+  - build_image
+  - deploy
+
+
+build_for_dev:
+  stage: build
+  environment:
+    name: dev
+  image: ${CI_NODEJS_IMAGE}
+  script:
+    - echo "Building..."
+    - npm install --progress=false
+    - npm run build
+    - echo "Build successfully!"
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - build/
+  only:
+    - master
+
+build_for_prod:
+  stage: build
+  environment:
+    name: prod
+  image: ${CI_NODEJS_IMAGE}
+  script:
+    - echo "Building..."
+    - npm install --progress=false
+    - npm run build
+    - echo "Build successfully!"
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - build/
+  only:
+    - prod
+
+
+build_image:
+  stage: build_image
+  image: docker
+  before_script:
+    - docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+    - echo ${IMAGE_NAME}
+  script:
+    - echo "Build..."
+    - docker build -f Dockerfile -t ${IMAGE_NAME} .
+    - echo "Pushing..."
+    - docker push ${IMAGE_NAME}
+    - echo "Build and push complete"
+  #when: manual
+
+deploy-front-to-dev:
+  stage: deploy
+  environment:
+    name: dev
+  image:
+    name: bitnami/kubectl
+    entrypoint: [""]
+  variables:
+    SSH_PRIVATE_KEY: $CI_GITLAB_PRIVATE_KEY
+    DOCKER_HOST: $DOCKER_HOST_DEV
+  before_script:
+    - export KUBECONFIG=$KUBECONFIG_FILE
+    - echo ${IMAGE_NAME}
+    - |
+        kubectl create secret -n default \
+        docker-registry sso-frontend \
+        --docker-server="$CI_REGISTRY" \
+        --docker-username="${CI_DEPLOY_USER:-$CI_REGISTRY_USER}" \
+        --docker-password="${CI_DEPLOY_PASSWORD:-$CI_REGISTRY_PASSWORD}" \
+        --docker-email="$GITLAB_USER_EMAIL" || true
+  script:
+    - sed  -e "s~{{SSO-FRONTEND-IMAGE}}~${IMAGE_NAME}~g" deployments/deployments.yaml | kubectl apply -f -
+  only:
+    - master
+  #when: manual
+  
+
+deploy-front-to-prod:
+  stage: deploy
+  environment:
+    name: prod
+  image:
+    name: bitnami/kubectl
+    entrypoint: [""]
+  variables:
+    SSH_PRIVATE_KEY: $CI_GITLAB_PRIVATE_KEY
+    DOCKER_HOST: $DOCKER_HOST_DEV
+  before_script:
+    - export KUBECONFIG=$KUBECONFIG_FILE
+    - echo ${IMAGE_NAME}
+    - |
+        kubectl create secret -n default \
+        docker-registry sso-frontend \
+        --docker-server="$CI_REGISTRY" \
+        --docker-username="${CI_DEPLOY_USER:-$CI_REGISTRY_USER}" \
+        --docker-password="${CI_DEPLOY_PASSWORD:-$CI_REGISTRY_PASSWORD}" \
+        --docker-email="$GITLAB_USER_EMAIL" || true
+  script:
+    - sed  -e "s~{{SSO-FRONTEND-IMAGE}}~${IMAGE_NAME}~g" deployments/deployments.yaml | kubectl apply -f -
+  only:
+    - prod
+  when: manual

@@ -1,0 +1,39 @@
+.body1 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.body2 {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.body3 {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.body4 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.align {
+  &Left {
+    text-align: left;
+  }
+  &Right {
+    text-align: right;
+  }
+  &Center {
+    text-align: center;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}

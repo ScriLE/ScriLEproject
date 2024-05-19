@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.page {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
+  &>div {
+    flex: none;
+  }
+}

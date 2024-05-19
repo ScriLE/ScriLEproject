@@ -1,0 +1,30 @@
+.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+  font-size: 16px;
+  min-width: 26px;
+  height: 24px;
+  padding: 0 calc(var(--gap) * 0.2);
+  border-radius: 4px;
+}
+
+.badge-wrapper {
+  margin-left: auto;
+}
+
+.value-container-multi,
+.value-container-single {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  flex-wrap: nowrap;
+  padding: 0 calc(var(--gap) * 0.5);
+  overflow: hidden;
+  border: 0;
+  background-color: transparent;
+}

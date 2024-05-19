@@ -1,0 +1,111 @@
+@mixin gap($count, $prefix) {
+  @for $i from 1 through $count {
+    $size: $i * 4px;
+    &.spacing-#{$prefix}-#{$i} {
+      width: calc(100% + $size * 2);
+      margin: -$size;
+      & > .grid-item {
+        padding: $size;
+        position: relative;
+      }
+    }
+  }
+}
+
+@mixin size($prefix) {
+  @for $i from 1 through 12 {
+    $width: calc((100% * $i) / 12);
+    .size-#{$prefix}-#{$i} {
+      flex-grow: 0;
+      max-width: $width;
+      flex-basis: $width;
+    }
+  }
+}
+
+@mixin direction($value) {
+  &.direction-#{$value} {
+    flex-direction: #{$value};
+  }
+}
+
+@mixin wrap($value) {
+  &.wrap-#{$value} {
+    flex-wrap: #{$value};
+  }
+}
+
+@mixin justify($value) {
+  &.justify-#{$value} {
+    justify-content: #{$value};
+  }
+}
+
+@mixin align($type, $value) {
+  &.align-#{$type}-#{$value} {
+    align-#{$type}: #{$value};
+  }
+}
+
+.grid {
+  &-container {
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    @include gap(16, "xs");
+    @include direction("row");
+    @include direction("row-reverse");
+    @include direction("column");
+    @include direction("column-reverse");
+    @include wrap("nowrap");
+    @include wrap("wrap");
+    @include wrap("wrap-reverse");
+    @include justify("flex-start");
+    @include justify("flex-end");
+    @include justify("center");
+    @include justify("space-between");
+    @include justify("space-around");
+    @include justify("space-evenly");
+    @include align("content", "stretch");
+    @include align("content", "center");
+    @include align("content", "flex-start");
+    @include align("content", "flex-end");
+    @include align("content", "space-between");
+    @include align("content", "space-around");
+    @include align("items", "flex-start");
+    @include align("items", "flex-end");
+    @include align("items", "stretch");
+    @include align("items", "center");
+    @include align("items", "baseline");
+  }
+}
+
+@include size("xs");
+
+@media (min-width: 576px) {
+  .grid-container {
+    @include gap(16, "sm");
+  }
+  @include size("sm");
+}
+
+@media (min-width: 769px) {
+  .grid-container {
+    @include gap(16, "md");
+  }
+  @include size("md");
+}
+
+@media (min-width: 992px) {
+  .grid-container {
+    @include gap(16, "lg");
+  }
+  @include size("lg");
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    @include gap(16, "xl");
+  }
+  @include size("xl");
+}
